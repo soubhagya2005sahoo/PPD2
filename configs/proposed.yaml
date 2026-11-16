@@ -1,0 +1,51 @@
+# Configuration for Full Proposed Framework (Step 7)
+# View-Aware Multi-Scale Image Enhancement, Feature Fusion & Efficient Latent Diffusion
+
+dataset:
+  root: "datasets/AG-ReID.v2"
+  height: 256
+  width: 128
+  num_classes: 590
+
+enhancement:
+  use_enhancement: true
+  mode: "clahe_gamma"
+  clip_limit: 2.0
+  gamma: 1.2
+  use_random_erasing: true
+
+model:
+  name: "view_aware_multiscale_diffusion"
+  pretrained: true
+  last_stride: 1
+  common_dim: 512
+  fused_dim: 512
+  use_view_aware: true
+  use_diffusion: true
+  fusion_strategy: "weighted"
+
+sampler:
+  num_pids_per_batch: 16     # P = 16 persons (stronger batch-hard negatives)
+  num_instances_per_pid: 4   # K = 4 images per person
+  batch_size: 64             # Total batch size = 64
+
+loss:
+  triplet_margin: 0.3
+  label_smoothing: 0.1
+  weight_id: 1.0
+  weight_triplet: 1.0
+  weight_view: 0.1
+  weight_diffusion: 0.2
+
+optimizer:
+  name: "Adam"
+  lr: 0.00035
+  weight_decay: 0.0005
+
+training:
+  epochs: 2
+  eval_period: 1
+  checkpoint_dir: "results/checkpoints"
+  log_dir: "results/logs"
+  num_workers: 0
+

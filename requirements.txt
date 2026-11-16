@@ -1,0 +1,19 @@
+# Core Deep Learning Framework
+torch==2.15.0
+torchvision==0.29.2
+
+# Numerical Computation & Data Handling
+numpy==2.5.4
+
+# Image Processing & Computer Vision
+pillow==13.0.0
+opencv-python==5.0.0.93
+
+# Evaluation & Scientific Utilities
+scikit-learn==1.9.1
+matplotlib==3.11.2
+
+# Configuration & Progress Tracking
+PyYAML==6.0.3
+tqdm==4.70.1
+

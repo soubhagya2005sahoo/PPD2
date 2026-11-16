@@ -1,0 +1,48 @@
+{
+  "experiment": "proposed_full",
+  "overall": {
+    "Rank-1": 26.885515213012695,
+    "Rank-5": 42.95799255371094,
+    "Rank-10": 50.93540573120117,
+    "mAP": 18.487512877532385,
+    "mINP": 2.7231932625441337
+  },
+  "aerial_to_ground": {
+    "Rank-1": 53.44986343383789,
+    "Rank-5": 70.37718200683594,
+    "Rank-10": 76.79393005371094,
+    "mAP": 31.808771609637525,
+    "mINP": 5.6668068372308
+  },
+  "ground_to_aerial": {
+    "Rank-1": 49.26523971557617,
+    "Rank-5": 63.7918586730957,
+    "Rank-10": 69.83859252929688,
+    "mAP": 32.248850381984916,
+    "mINP": 6.770048521264879
+  },
+  "efficiency": {
+    "params_millions": 26.17,
+    "ms_per_image": 6.329,
+    "fps": 158.0,
+    "embedding_dim": 512
+  },
+  "view_scale_weights": {
+    "Aerial_C0": {
+      "fine": 0.1745,
+      "medium": 0.1956,
+      "coarse": 0.6298
+    },
+    "Wearable_C2": {
+      "fine": 0.1799,
+      "medium": 0.1989,
+      "coarse": 0.6212
+    },
+    "CCTV_C3": {
+      "fine": 0.1655,
+      "medium": 0.1928,
+      "coarse": 0.6417
+    }
+  },
+  "epochs_trained": 2
+}

@@ -1,0 +1,74 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Node.js dependencies
+node_modules/
+frontend/node_modules/
+.npm/
+
+# Operating system artifacts
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Large datasets & raw data (root level)
+/datasets/
+/data/
+*.zip
+*.tar
+*.tar.gz
+*.h5
+*.hdf5
+
+# Model checkpoints & weights (exceeds GitHub limits)
+checkpoints/
+weights/
+results/checkpoints/
+*.pt
+*.pth
+*.onnx
+*.bin
+*.ckpt
+
+# Large visualization batches & scratch logs
+results/logs/
+results/retrieval_examples/
+results/retrieval_examples_proposed/
+results/multiscale_visualizations/
+results/enhancement_visualizations/
+results/fusion_visualizations/
+features/fused/
+features/multiscale/
+
+# Logs and environment files
+*.log
+logs/
+wandb/
+runs/
+.env
+.env.local
+
+# IDE & Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing and profiling caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+

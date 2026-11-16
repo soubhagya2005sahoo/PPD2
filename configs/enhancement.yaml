@@ -1,0 +1,19 @@
+# Configuration for Image Enhancement (CLAHE and Gamma Correction)
+enhancement:
+  method: "clahe_gamma"         # Options: 'none', 'clahe', 'gamma', 'clahe_gamma'
+  order: "clahe_first"          # Options: 'clahe_first', 'gamma_first'
+  
+  clahe:
+    clip_limit: 2.0             # Contrast clipping threshold (avoids noise amplification)
+    tile_grid_size: [8, 8]      # Local contextual window size
+
+  gamma:
+    value: 1.2                  # Luminance correction (>1.0 brightens shadows)
+
+io:
+  input_dir: "datasets/AG-ReID.v2"
+  output_dir: "datasets/AG-ReID.v2_enhanced"
+  results_dir: "results/enhancement_visualizations"
+  metrics_csv: "results/enhancement_metrics.csv"
+  num_visualize_samples: 6      # Number of representative multi-camera samples to plot
+

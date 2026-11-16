@@ -1,0 +1,33 @@
+# Configuration for Multi-Scale Feature Extraction (Step 5)
+backbone:
+  name: "resnet50"
+  checkpoint: "results/checkpoints/best_model.pth"
+  last_stride: 1
+
+scales:
+  fine:
+    stage: "layer1"
+    channels: 256
+    description: "Low-level edges, localized patterns, clothing textures"
+  medium:
+    stage: "layer2"
+    channels: 512
+    description: "Intermediate regional anatomy, clothing arrangement"
+  coarse:
+    stage: "layer4"
+    channels: 2048
+    description: "High-level global posture, holistic semantic context"
+
+pooling:
+  method: "GAP"               # Global Average Pooling
+  l2_normalize: true          # L2 normalization applied to each scale individually
+
+io:
+  input_mode: "original"      # Options: 'original' or 'enhanced'
+  dataset_root: "datasets/AG-ReID.v2"
+  enhanced_root: "datasets/AG-ReID.v2_enhanced"
+  features_out_dir: "features/multiscale"
+  visualizations_out_dir: "results/multiscale_visualizations"
+  batch_size: 64
+  num_workers: 0
+

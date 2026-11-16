@@ -1,0 +1,29 @@
+# Configuration for Multi-Scale Feature Fusion (Step 6)
+model:
+  name: "multiscale_fusion_model"
+  num_classes: 590
+  common_dim: 512              # Projected dimension for each individual scale
+  fused_dim: 512               # Dimension of unified fused feature representation
+  fusion_strategy: "weighted"  # Options: 'weighted' (Learned Softmax weights) or 'concat'
+  pretrained: true
+  last_stride: 1
+
+training:
+  epochs: 5
+  eval_period: 2
+  batch_size: 32               # P = 8, K = 4
+  optimizer:
+    name: "Adam"
+    lr: 0.00035
+    weight_decay: 0.0005
+  loss:
+    weight_id: 1.0
+    weight_triplet: 1.0
+    triplet_margin: 0.3
+
+io:
+  checkpoint_dir: "results/checkpoints"
+  log_dir: "results/logs"
+  features_out_dir: "features/fused"
+  visualizations_dir: "results/fusion_visualizations"
+
