@@ -23,7 +23,7 @@ Open your browser at **`http://localhost:8000`** (or the port displayed if port 
 - **Image Search (Primary Page)**: Upload any person image or select a 1-click test probe ($P0867$, $P0195$, $P0610$), choose optional viewpoint (`UAV`, `CCTV`, `Wearable`, or `Automatic`), and click **"FIND MATCHING IMAGES"**.
 - **Automated AI Pipeline**: Preprocessing $\to$ CLAHE & Gamma enhancement $\to$ ResNet-50 multi-scale extraction $\to$ View-aware scale attention $\to$ Latent diffusion refinement $\to$ Cosine similarity ranking against 40,473 gallery images in <15ms.
 - **Top-5 & Top-10 Retrieval**: View ranked matches with cosine similarity %, identity tags, and cross-view indicators.
-- **1-to-1 Cross-View Verification**: Compare any two images with similarity score and decision threshold ($0.40$).
+- **1-to-1 Cross-View Verification**: Compare any two images across Aerial UAV, CCTV, and Wearable cameras with calibrated similarity scoring and automated verdict. See full architectural documentation in [`docs/CROSS_VIEW_VERIFICATION.md`](docs/CROSS_VIEW_VERIFICATION.md).
 - **Model Architecture & Evaluation**: Interactive parameter allocation tables (26.17M params) and CMC curves.
 
 ---

@@ -58,6 +58,9 @@ The dataset models realistic heterogeneous multi-sensor surveillance:
 - **Camera $C_2$ (Wearable Smart Glasses):** $36,550$ images ($36.4\%$). Egocentric first-person viewpoint subject to body motion and variable angles.
 - **Camera $C_3$ (Ground CCTV Surveillance):** $17,173$ images ($17.1\%$). Fixed ground-level surveillance cameras with static wide fields of view.
 
+![Figure 3: Authorised AG-ReID.v2 Benchmark Examples across Camera Modalities](file:///Users/soubhagyaranjansahoo/person%20re%20identification/results/final_visualizations/benchmark_camera_views_panel.png)
+*Fig. 3. Authorised benchmark examples from the official AG-ReID.v2 dataset release across three heterogeneous surveillance platforms: Aerial UAV (C0, steep pitch 60°–90°), Wearable Smart Glasses (C2, egocentric eye-level walking perspective), and Ground CCTV (C3, static surveillance profile). Each horizontal row illustrates the severe cross-view domain gap for the exact same pedestrian identity, preserving original source release labels.*
+
 ---
 
 ## 3. Proposed Methodology & Architecture
@@ -116,6 +119,9 @@ To recover degraded pedestrian textures without distorting semantic clothing col
 3. A precomputed **Look-Up Table (LUT) Gamma Correction** ($\gamma = 1.2$) is applied to lighten deep pedestrian shadows.
 4. Converted back to RGB for neural network feature extraction.
 
+![Figure 4: Side-by-side Enhancement Comparison from AG-ReID.v2](file:///Users/soubhagyaranjansahoo/person%20re%20identification/results/final_visualizations/enhancement_comparison_figure4.png)
+*Fig. 4. Side-by-side enhancement ablation on an authentic AG-ReID.v2 benchmark probe (P0867T04070A0C0F13861.jpg; Aerial UAV C0, Altitude Tier A0): (a) Original raw acquisition exhibiting severe cast shadow and underexposed clothing patterns (Entropy: 5.6023 bits); (b) CIELAB CLAHE result (clip_limit=2.0, tile_grid_size=(8,8) on L* channel), yielding +26.2% RMS contrast enhancement; (c) Proposed CLAHE + Gamma result (γ=1.2 via 256-element LUT), lifting deep shadow valleys and recovering fine garment texture without chromatic distortion (+18.2% entropy gain, +1.02 bits).*
+
 ### 3.2 Multi-Scale ResNet-50 Feature Extractor
 Standard Re-ID backbones only use the final convolutional block, which discards localized spatial patterns. Our modified ResNet-50 retains three distinct hierarchical stages:
 - **Fine Scale (`layer1`):** $256$ channels, spatial resolution $64 \times 32$. Encodes localized micro-textures (zippers, stripe patterns, shoe accents).
@@ -167,6 +173,9 @@ Evaluation was conducted following the standard Market-1501 / AG-ReID protocol, 
 #### Key Analytical Takeaways:
 1. **The $+46.6\%$ Surge in mAP:** mAP reflects the model's ability to retrieve *all multi-camera appearances* of a person rather than just finding one lucky match. The leap from $12.61\%$ to $18.49\%$ confirms that the multi-scale representations and view-aware attention successfully preserve cross-camera identity consistency.
 2. **Top-10 Accuracy Surpasses 50%:** In real-world surveillance operations, security analysts inspect the top-10 candidate matches. The proposed model achieves **$50.94\%$ Rank-10 accuracy**, ensuring that for the majority of queries, the suspect is present within the initial screen view.
+
+![Figure 5: Empirical Performance Comparison of Model Ablation Variants on AG-ReID.v2](file:///Users/soubhagyaranjansahoo/person%20re%20identification/results/final_visualizations/model_variants_ablation_figure5.png)
+*Fig. 5. Empirical performance comparison (Rank-1 Accuracy and mAP in %) across the progressive model ablation variants evaluated on the official AG-ReID.v2 benchmark test split (8,499 queries × 40,473 gallery). All values represent actual evaluation metrics.*
 
 ---
 
